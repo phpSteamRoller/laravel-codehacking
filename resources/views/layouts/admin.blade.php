@@ -75,9 +75,7 @@
 
 
 
-
-
-        {{--<ul class="nav navbar-nav navbar-right">--}}
+  {{--<ul class="nav navbar-nav navbar-right">--}}
         {{--@if(auth()->guest())--}}
         {{--@if(!Request::is('auth/login'))--}}
         {{--<li><a href="{{ url('/auth/login') }}">Login</a></li>--}}
@@ -96,6 +94,7 @@
         {{--</li>--}}
         {{--@endif--}}
         {{--</ul>--}}
+
 
 
 
@@ -138,11 +137,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/posts">All Posts</a>
+                                <a href="{{ route('admin.posts.index') }}">All Posts</a>
                             </li>
 
                             <li>
-                                <a href="/posts/create">Create Post</a>
+                                <a href="{{ route('admin.posts.create') }}">Create Post</a>
                             </li>
 
                         </ul>

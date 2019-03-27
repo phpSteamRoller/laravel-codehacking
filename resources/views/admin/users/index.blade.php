@@ -3,8 +3,9 @@
 
 @section('content')
 
-
-
+@if (Session::has('user_notifcation'))
+    <div class="alert-info"><p>{{ session('user_notifcation') }}</p></div>
+@endif
 <h1>USERS</h1>
 <table class="table">
     <thead>

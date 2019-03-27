@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Illuminate\Validation\Rule;
 
-class UserRequest extends Request
+class PostCreateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +24,10 @@ class UserRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'role_id' => 'required',
-            'is_active' => 'required',
-            'password' => 'required'
+            'category_id' => 'required',
+            'photo_id' => 'required',
+            'title' => 'required',
+            'body' => 'required'
         ];
     }
 }

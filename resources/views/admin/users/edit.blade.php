@@ -7,6 +7,14 @@
 <div class="col-sm-3">
     <img   src="{{ $user->photo ? $user->photo->file : '/images/user-no-image.png' }}" alt="" class="img-responsive img-rounded">
 
+    <div class="alert alert-primary" role="alert">
+        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminUsersController@destroy', $user->id]]) !!}
+        <div class="form-group">
+        {!! Form::submit('Delete User', ['class' => 'btn btn-danger']) !!}
+        </div>
+        {!! Form::close() !!}    
+</div>
+
 </div>
 
 <div class="col-sm-9">
@@ -51,5 +59,7 @@
 @include('includes.form-errors')
 
 </div>
+
+          
 
 @endsection

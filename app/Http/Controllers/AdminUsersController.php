@@ -137,8 +137,23 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+
+        $user = User::findOrfail($id);
+
+        // treba obrisati is sliku korisnika
+        unlink(public_path() . $user->photo->file);
+
+        $user->photo->delete();
+
+        $user->delete();
+
+        $request->session()->flash('user_notifcation', 'Korisnik je obrisan');
+      
+        
+
+        return redirect('/admin/users');
+
     }
 }
