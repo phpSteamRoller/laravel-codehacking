@@ -20,7 +20,7 @@
             @foreach ($posts as $post)
             <tr>
                     <td scope="row">{{ $post->id }}</td>
-                    <td>{{ $post->user->name }}</td>
+                    <td><a href="{{ route('admin.posts.edit', $post->id) }}">{{ $post->user->name  }}</a></td>
                     <td>{{ $post->category->name }}</td>
                     <td>
                      @if ($post->photo)
