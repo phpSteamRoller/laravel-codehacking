@@ -11,6 +11,7 @@
                 <th>Photo</th>
                 <th>Title</th>
                 <th>body</th>
+                <th>Comments</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
                     </td>
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->body }}</td>
+                    <td><a href="{{ route('admin.comments.show', $post->id) }}">Comments</td>
                 </tr>
             @endforeach
 
