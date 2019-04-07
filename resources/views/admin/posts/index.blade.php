@@ -11,6 +11,7 @@
                 <th>Photo</th>
                 <th>Title</th>
                 <th>body</th>
+                <th>View Post</th>
                 <th>Comments</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                     </td>
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->body }}</td>
+                    <td><a href="{{ route('home_post', $post->slug) }}">View Post</td>
                     <td><a href="{{ route('admin.comments.show', $post->id) }}">Comments</td>
                 </tr>
             @endforeach
@@ -40,4 +42,10 @@
             
         </tbody>
     </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{ $posts->render() }}
+        </div>
+    </div>
 @endsection

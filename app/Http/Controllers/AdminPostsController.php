@@ -11,6 +11,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostCreateRequest;
 
+
+if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    // Ignores notices and reports all other kinds... and warnings
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+    // error_reporting(E_ALL ^ E_WARNING); // Maybe this is enough
+}
+
 class AdminPostsController extends Controller
 {
     /**
@@ -20,7 +27,7 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-         $posts = Post::all();
+         $posts = Post::paginate(2);
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -162,9 +169,11 @@ class AdminPostsController extends Controller
     }
 
 
-    public function post($id)
+    public function post($slug)
     {
-        $post = Post::findOrfail($id);
+
+      
+        $post = Post::findBySlugOrFail($slug);
 
         $comments = $post->comments()->whereIsActive(1)->get();
 
